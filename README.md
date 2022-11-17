@@ -1,24 +1,23 @@
-# react-daterange-picker 
+# react-daterange-picker
 
-A react date range picker using material-ui components forked from <a href='https://www.npmjs.com/package/@matharumanpreet00/react-daterange-picker'>.
+A react date range picker using mui components forked from <a href='https://www.npmjs.com/package/@matharumanpreet00/react-daterange-picker'>.
 
 ## Usage
 
 ```bash
-npm install @vutpov/react-mui-daterange-picker --save
+npm install @maxstudener/react-mui-daterange-picker --save
 # or with yarn
-yarn add @vutpov/react-mui-daterange-picker
+yarn add @maxstudener/react-mui-daterange-picker
 ```
 
 ## Basic Example
 
 ```tsx
 import React from "react";
-import { DateRangePicker, DateRange } from "@vutpov/react-mui-daterange-picker";
+import { DateRangePicker, DateRange } from "@maxstudener/react-mui-daterange-picker";
 
 type Props = {}
 type State = {
-    open: boolean,
     dateRange: DateRange
 }
 
@@ -26,7 +25,7 @@ class App extends React.Component<Props, State> {
 	state = {
 		dateRange: {}
 	};
-	
+
 	render() {
 		return (
 			<DateRangePicker
@@ -43,7 +42,7 @@ export default App;
 
 ```tsx
 import React from "react";
-import { DateRangePicker, DateRange } from "@vutpov/react-mui-daterange-picker";
+import { DateRangePicker, DateRange } from "@maxstudener/react-mui-daterange-picker";
 
 type Props = {}
 
@@ -60,7 +59,7 @@ const App: React.FunctionComponent<Props> = props => {
 export default App;
 ```
 
-## Types 
+## Types
 
 ```ts
 interface DateRange {

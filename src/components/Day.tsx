@@ -1,7 +1,5 @@
 import * as React from 'react'
-import { IconButton, Typography, createStyles, Theme } from '@material-ui/core'
-import { combine } from '../utils'
-import { makeStyles } from '@mui/styles'
+import { IconButton, Typography, useTheme } from '@mui/material'
 
 interface DayProps {
   filled?: boolean
@@ -15,72 +13,39 @@ interface DayProps {
   value: number | string
 }
 
-const useStyles = makeStyles((theme: any) => {
-  return {
-    leftBorderRadius: {
-      borderRadius: '50% 0 0 50%',
-    },
-    rightBorderRadius: {
-      borderRadius: '0 50% 50% 0',
-    },
-    buttonContainer: {
-      display: 'flex',
-    },
-    button: {
-      height: 36,
-      width: 36,
-      padding: 0,
-    },
-    buttonText: {
-      lineHeight: 1.6,
-    },
-    outlined: {
-      border: `1px solid ${theme.palette.primary.dark}`,
-    },
-    filled: {
-      '&:hover': {
-        backgroundColor: theme.palette.primary.dark,
-      },
-      backgroundColor: theme.palette.primary.dark,
-    },
-    highlighted: {
-      backgroundColor: theme.palette.action.hover,
-    },
-    contrast: {
-      color: theme.palette.primary.contrastText,
-    },
-  }
-})
-
 const Day: React.FunctionComponent<DayProps> = (props) => {
-  const classes = useStyles()
+  const theme = useTheme()
   return (
     <div
-      className={combine(
-        classes.buttonContainer,
-        props.startOfRange && classes.leftBorderRadius,
-        props.endOfRange && classes.rightBorderRadius,
-        !props.disabled && props.highlighted && classes.highlighted,
-      )}
-    >
+      style={{
+        display: 'flex',
+        ...(props.startOfRange && { borderRadius: '50% 0 0 50%' }),
+        ...(props.endOfRange && { borderRadius: '0 50% 50% 0' }),
+        ...(!props.disabled && props.highlighted && { backgroundColor: theme.palette.action.hover }),
+      }}>
       <IconButton
-        className={combine(
-          classes.button,
-          !props.disabled && props.outlined && classes.outlined,
-          !props.disabled && props.filled && classes.filled,
-        )}
+        style={{
+          height: 36,
+          width: 36,
+          padding: 0,
+          ...(!props.disabled && props.outlined && { border: `1px solid ${theme.palette.primary.dark}` }),
+          ...(!props.disabled && props.filled && {
+            '&:hover': {
+              backgroundColor: theme.palette.primary.dark,
+            },
+            backgroundColor: theme.palette.primary.dark,
+          }),
+        }}
         disabled={props.disabled}
         onClick={props.onClick}
-        onMouseOver={props.onHover}
-      >
+        onMouseOver={props.onHover}>
         <Typography
-          color={!props.disabled ? 'initial' : 'textSecondary'}
-          className={combine(
-            classes.buttonText,
-            !props.disabled && props.filled && classes.contrast,
-          )}
-          variant="body2"
-        >
+          color={!props.disabled ? 'text.primary' : 'text.disabled'}
+          style={{
+            lineHeight: 1.6,
+            ...(!props.disabled && props.filled && { color: theme.palette.primary.contrastText }),
+          }}
+          variant="body2">
           {props.value}
         </Typography>
       </IconButton>
