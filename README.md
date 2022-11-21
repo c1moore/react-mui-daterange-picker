@@ -1,6 +1,10 @@
 # react-daterange-picker
 
-A react date range picker using mui components forked from <a href='https://www.npmjs.com/package/@matharumanpreet00/react-daterange-picker'>.
+A react date range picker using mui components forked from [react-daterange-picker](https://www.npmjs.com/package/@matharumanpreet00/react-daterange-picker).
+
+This repo was converted to use mui v5 instead of material-ui. It also removed modal functionality and made it a regular component.
+
+![Preview](screenshot_1.png)
 
 ## Usage
 
@@ -79,7 +83,7 @@ interface DefinedRange {
 Name | Type | Required | Default value | Description
 :--- | :--- | :--- | :--- | :---
 `initialDateRange` | `DateRange` | | `{}` | initially selected date range
-`minDate` | `Date | string` | | 10 years ago | min date allowed in range
-`maxDate` | `Date | string` | | 10 years from now | max date allowed in range
+`minDate` | `Date` | | 10 years ago | min date allowed in range
+`maxDate` | `Date` | | 10 years from now | max date allowed in range
 `onChange` | `(DateRange) => void` | _required_ | - | handler function for providing selected date range
 `definedRanges` | `DefinedRange[]` | | - | custom defined ranges to show in the list
