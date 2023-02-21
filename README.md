@@ -1,24 +1,24 @@
 # react-daterange-picker
 
-A react date range picker using mui components forked from [react-daterange-picker](https://www.npmjs.com/package/@matharumanpreet00/react-daterange-picker).
+A react date range picker using mui components forked from [react-daterange-picker](https://www.npmjs.com/package/react-daterange-picker).
 
-This repo was converted to use mui v5 instead of material-ui. It also removed modal functionality and made it a regular component.
+This repo was converted to use MUI's tree shaking feature to reduce the bundle size.
 
 ![Preview](screenshot_1.png)
 
 ## Usage
 
 ```bash
-npm install @maxstudener/react-mui-daterange-picker --save
+npm install react-mui-daterange-picker --save
 # or with yarn
-yarn add @maxstudener/react-mui-daterange-picker
+yarn add react-mui-daterange-picker
 ```
 
 ## Basic Example
 
 ```tsx
 import React from "react";
-import { DateRangePicker, DateRange } from "@maxstudener/react-mui-daterange-picker";
+import { DateRangePicker, DateRange } from "react-mui-daterange-picker";
 
 type Props = {}
 type State = {
@@ -46,7 +46,7 @@ export default App;
 
 ```tsx
 import React from "react";
-import { DateRangePicker, DateRange } from "@maxstudener/react-mui-daterange-picker";
+import { DateRangePicker, DateRange } from "react-mui-daterange-picker";
 
 type Props = {}
 
