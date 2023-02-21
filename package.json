@@ -1,14 +1,13 @@
 {
 	"name": "@maxstudener/react-mui-daterange-picker",
-	"version": "0.0.2",
+	"version": "1.0.0",
 	"description": "A react date range picker using Material Design(@mui)",
 	"author": {
-		"email": "maxmillian.studener@gmail.com",
-		"name": "Max Studener"
+		"name": "Calvin Moore"
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/maxstudener/react-mui-daterange-picker"
+		"url": "https://github.com/c1moore/react-mui-daterange-picker"
 	},
 	"main": "build/index.js",
 	"scripts": {
@@ -24,7 +23,7 @@
 	"devDependencies": {
 		"@types/react": "^18.0.25",
 		"@types/react-dom": "^18.0.9",
-		"typescript": "^4.2.2"
+		"typescript": "^4.9.5"
 	},
 	"peerDependencies": {
 		"@mui/material": "^5.10.12",

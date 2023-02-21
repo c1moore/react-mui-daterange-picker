@@ -1,5 +1,7 @@
 import * as React from 'react'
-import { Paper, Grid, Typography } from '@mui/material'
+import Paper from '@mui/material/Paper'
+import Grid from '@mui/material/Grid'
+import Typography from '@mui/material/Typography'
 import {
   getDate,
   isSameMonth,

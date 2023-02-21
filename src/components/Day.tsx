@@ -1,5 +1,7 @@
 import * as React from 'react'
-import { IconButton, Typography, useTheme } from '@mui/material'
+import IconButton from '@mui/material/IconButton'
+import Typography from '@mui/material/Typography'
+import { useTheme } from '@mui/material/styles'
 
 interface DayProps {
   filled?: boolean

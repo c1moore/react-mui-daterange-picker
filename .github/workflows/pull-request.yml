@@ -1,0 +1,15 @@
+name: Pull Request
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+
+env:
+  PULUMI_STACK_NAME: prod
+
+jobs:
+  build-workflow:
+    name: Build
+    uses: ./.github/workflows/build.yml
+    with:
+      artifact-name: ${{ github.sha }}

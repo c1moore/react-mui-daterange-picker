@@ -1,44 +1,41 @@
-name: Build Packages and Release
+name: Build Packages
 on:
-  push:
-    branches: [release]
-  pull_request:
-    branches: [master]
+  workflow_call:
+    inputs:
+      artifact-name:
+        required: true
+        type: string
+
 jobs:
   build:
-    runs-on: ubuntu-18.04
-    strategy:
-      matrix:
-        node: ['16']
-    name: Node ${{ matrix.node }}
+    name: Build
+    runs-on: ubuntu-latest
 
     steps:
-       - uses: actions/checkout@v2
-       - uses: actions/setup-node@v1
-         with:
-           node-version: '10.x'
-           registry-url: 'https://registry.npmjs.org'
-       - run: npm install
-       - run: npm publish
-         env:
-           NODE_AUTH_TOKEN: ${{ secrets.YARN_TOKEN }}
-#       - uses: actions/setup-node@v1
-#         with:
-#           registry-url: 'https://npm.pkg.github.com'
-#       - run: npm publish
-#         env:
-#           NODE_AUTH_TOKEN: ${{ secrets.GH }}
-#       - name: Create Release
-#         id: create_release
-#         uses: actions/create-release@v1
-#         env:
-#           GITHUB_TOKEN: ${{ secrets.GH }} # This token is provided by Actions, you do not need to create your own token
-#         with:
-#           tag_name: ${{ github.ref }}
-#           release_name: Release ${{ github.ref }}
-#           body: |
-#             Changes in this Release
-#             - First Change
-#             - Second Change
-#           draft: false
-#           prerelease: false
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Cache node_modules
+        id: node_modules_cache
+        uses: actions/cache@v3
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Install Dependencies
+        if: steps.node_modules_cache.outputs.cache-hit != 'true'
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ inputs.artifact-name }}
+          path: build
