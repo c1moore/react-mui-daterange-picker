@@ -1,5 +1,5 @@
 {
-	"name": "@c1moore/react-mui-daterange-picker",
+	"name": "react-mui-daterange-picker",
 	"version": "1.0.0",
 	"description": "A react date range picker using Material Design(@mui)",
 	"author": {
